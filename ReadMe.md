@@ -1,23 +1,23 @@
-A .NET wrapper for [tesseract-ocr](http://code.google.com/p/tesseract-ocr/).
+A .NET wrapper for [tesseract-ocr] 3.04.
 
 ## Dependencies
 
-### Visual Studio 2012 x86 and x64 Runtimes 
+### Visual Studio 2015 x86 and x64 Runtimes 
 
-Since tesseract and leptonica binaries are compiled with Visual Studio 2012 you'll need to ensure you have the 
-Visual Studio 2012 Runtime installed. This can be found [here](http://www.microsoft.com/en-us/download/details.aspx?id=30679).
+Since tesseract and leptonica binaries are compiled with Visual Studio 2015 you'll need to ensure you have the 
+[Visual Studio 2015 Runtime][vs-runtime] installed.
 
 ### Tesseract language data
 
-You will also need to download the language data files for tesseract 3.02 from [tesseract-ocr].
+You will also need to download the language data files for tesseract 3.04 from [tesseract-ocr].
 
 ## Getting started quickly
 
 1. Add the ``Tesseract`` NuGet Package by running ``Install-Package Tesseract`` from the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console).
-2. Ensure you have Visual Studio 2012 x86 & x64 runtimes installed (see note above).
-3. Download language data files for tesseract 3.02 from [tesseract-ocr] and add them to your project, 
+2. Ensure you have Visual Studio 2015 x86 & x64 runtimes installed (see note above).
+3. Download language data files for tesseract 3.04 from the [tessdata repository](https://github.com/tesseract-ocr/tessdata/releases/tag/3.04.00) and add them to your project, 
    ensure 'Copy to output directory' is set to Always.
-4. Check out the Samples solution ``~/Samples/Tesseract.Samples.sln`` for a working example
+4. Check out the Samples solution ``~/src/Tesseract.Samples.sln`` in the [tesseract-samples](https://github.com/charlesw/tesseract-samples) repository for a working example.
 
 If you run into any issues please check out [this](https://github.com/charlesw/tesseract/wiki/Errors) wiki page which details a number common issues and some potential solutions.
 
@@ -27,7 +27,7 @@ Please create your pull requests to target the "develop" branch. "Master" is onl
 
 ## License
 
-Copyright 2012-2014 Charles Weld.
+Copyright 2012-2016 Charles Weld.
 
 Licensed under the [Apache License, Version 2.0][apache2] (the "License"); you
 may not use this software except in compliance with the License. You may obtain
@@ -70,4 +70,5 @@ Also thanks to the following projects\resources without which this project would
 * [Interop with Native Libraries](http://www.mono-project.com/Interop_with_Native_Libraries) - Stacks of useful information about c# P/Invoke and Marshaling
 
 [apache2]: http://www.apache.org/licenses/LICENSE-2.0
-[tesseract-ocr]: http://code.google.com/p/tesseract-ocr
+[tesseract-ocr]: https://github.com/tesseract-ocr/tesseract
+[vs-runtime]: https://www.microsoft.com/en-us/download/details.aspx?id=48145

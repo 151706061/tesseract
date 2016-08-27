@@ -5,7 +5,7 @@ using System.Text;
 using InteropDotNet;
 
 namespace Tesseract.Interop
-{
+{		
 	/// <summary>
 	/// The exported leptonica api signatures.
 	/// </summary>
@@ -143,6 +143,11 @@ namespace Tesseract.Interop
 
         [RuntimeDllImport(Constants.LeptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixSauvolaBinarizeTiled")]
         int pixSauvolaBinarizeTiled(HandleRef pix, int whsize, float factor, int nx, int ny, out IntPtr ppixth, out IntPtr ppixd);
+
+        // Scaling - src/scale.c
+
+        [RuntimeDllImport(Constants.LeptonicaDllName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "pixScale")]
+        IntPtr pixScale(HandleRef pixs, float scalex, float scaley);
 
         #endregion
 

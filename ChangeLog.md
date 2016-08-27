@@ -1,4 +1,38 @@
-﻿### Version 2.3.0
+﻿### Version 3.0.2
+
+* Fixed intermittent crash on initialisation - [Issue 231](https://github.com/charlesw/tesseract/issues/231)
+* Upgraded native tesseract libraries to those provided by https://github.com/charlesw/tesseract-vs (Visual Studio 2015)
+
+### Version 3.0.1
+
+* Fixed 64 bit support - [Issue 232](https://github.com/charlesw/tesseract/issues/232)
+
+### Version 3.0.0 (Tesseract 3.04)
+
+#### Breaking Changes
+
+* Requires VS 2013 runtime as the included Tesseract binaries are now compiled with VS 2013.
+
+#### Other Changes
+
+* Update Tesseract binaries to 3.04 - [Issue 168](https://github.com/charlesw/tesseract/issues/168)
+* Iterator.GetImage throws ArgumentException: Pix handle must not be zero  - [Issue 206](https://github.com/charlesw/tesseract/issues/206)
+* Support for ChoiceIterator - [Issue 129](https://github.com/charlesw/tesseract/issues/129)
+* Support for classify_bln_numeric_mode - [Issue 52](https://github.com/charlesw/tesseract/issues/52)
+* Support for setting Init only variables - [Issue 70](https://github.com/charlesw/tesseract/issues/70)
+* Support for copying\cloning an iterator - [Issue 25](https://github.com/charlesw/tesseract/issues/25)
+
+### Version 2.4.1
+
+* Fixed memory leak in Pix.BinarizeOtsuAdaptiveThreshold, Pix.BinarizeSauvola, and Pix.BinarizeSauvolaTiled - [Issue 218](https://github.com/charlesw/tesseract/issues/218)
+
+### Version 2.4.0
+
+* Support for scaling images - [Issue 183](https://github.com/charlesw/tesseract/issues/183)
+* Provide meaningful defaults for Pix.ConvertToGrayscale  - [Issue 184](https://github.com/charlesw/tesseract/issues/184)
+* Make TesseractException serialisable - [Issue 194](https://github.com/charlesw/tesseract/issues/194)
+
+### Version 2.3.0
 
 * Support for OsdOnly mode - [Issue 156](https://github.com/charlesw/tesseract/issues/156)
 * Support for saving the thresholded image to tessinput.tif when tessedit_write_images is set - [Issue 160](https://github.com/charlesw/tesseract/issues/160)

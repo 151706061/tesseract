@@ -44,8 +44,25 @@
   <!-- Load the common target, this does the real work for supporting multiple builds -->
   <Import Project="..\Common.net45.targets" />
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.core">
+      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter">
+      <HintPath>..\packages\NUnitTestAdapter.1.2\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" Condition=" '$(SupportNet35)' == 'True' ">
@@ -64,7 +81,6 @@
     </Compile>
     <Compile Include="AnalyseResultTests.cs" />
     <Compile Include="BaseApiTests.cs" />
-    <Compile Include="Data\PixToBitmapConverter.cs" />
     <Compile Include="EngineTests.cs" />
     <Compile Include="Leptonica\BitmapHelperTests.cs" />
     <Compile Include="Leptonica\ColorTests.cs" />
@@ -77,20 +93,20 @@
     <Compile Include="TesseractResultSet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\lib\TesseractOcr\x64\liblept168.dll">
-      <Link>x64\liblept168.dll</Link>
+    <Content Include="..\lib\TesseractOcr\x64\liblept172.dll">
+      <Link>x64\liblept172.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\lib\TesseractOcr\x64\libtesseract302.dll">
-      <Link>x64\libtesseract302.dll</Link>
+    <Content Include="..\lib\TesseractOcr\x64\libtesseract304.dll">
+      <Link>x64\libtesseract304.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\lib\TesseractOcr\x86\liblept168.dll">
-      <Link>x86\liblept168.dll</Link>
+    <Content Include="..\lib\TesseractOcr\x86\liblept172.dll">
+      <Link>x86\liblept172.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\lib\TesseractOcr\x86\libtesseract302.dll">
-      <Link>x86\libtesseract302.dll</Link>
+    <Content Include="..\lib\TesseractOcr\x86\libtesseract304.dll">
+      <Link>x86\libtesseract304.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Binarization\neo-32bit.png">
@@ -114,6 +130,9 @@
     <Content Include="Data\Conversion\photo_palette_4bpp.tif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\Conversion\photo_palette_8bpp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\Conversion\photo_palette_8bpp.tif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -121,6 +140,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Ocr\empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ocr\PSM_SingleBlock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ocr\PSM_SingleBlockVertText.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ocr\PSM_SingleChar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ocr\PSM_SingleLine.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ocr\PSM_SingleColumn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ocr\PSM_SingleWord.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Scew\scewed-phototest.png">
@@ -140,6 +177,11 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tesseract.Tests.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="tessdata\configs\bazzar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -152,7 +194,22 @@
     <None Include="Data\processing\multi-page.tif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Data\processing\numbers.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\processing\multi-page.tif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
+    <Content Include="Results\EngineTests.CanGenerateHOCROutput_False.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Results\EngineTests.CanGenerateHOCROutput_True.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Results\EngineTests.CanProcessPixUsingResultIteratorAndChoiceIterator.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Results\EngineTests.CanProcessPixUsingResultIterator.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -190,5 +247,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
